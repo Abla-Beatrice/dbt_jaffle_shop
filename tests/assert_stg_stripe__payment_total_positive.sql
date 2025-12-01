@@ -1,5 +1,5 @@
 select 
-  order_id
+  order_id,
   sum(amount) as total_amout
 from {{ ref('stg_stripe__payment') }}
 group by 1
