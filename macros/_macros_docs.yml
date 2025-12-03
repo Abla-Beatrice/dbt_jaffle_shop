@@ -1,0 +1,14 @@
+macros:
+  - name: cents_to_dollars
+    description: A macro that converts dollars to cents and rounds to the uder input decimal places, or 2 if nome is provided 
+    arguments:
+      - name: conlumn_name
+        type: string
+        description: The name of the column you want to convert 
+      - name: decimals
+        type: integer
+        description: number of decimal places, defaults to 2 
+      - name: grant_select
+        description: a macro that grants select privs on target.schema to target.role unless ortherwise specified
+
+
