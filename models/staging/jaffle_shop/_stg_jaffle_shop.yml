@@ -21,17 +21,18 @@ models:
         description: Prrimary key for the orders table
         data_tests:
           - unique
-          - not_null 
+          - not_null
       - name: order_status
         description: "{{ doc('order_status') }}"
         data_tests:
           - accepted_values:
-              values:
-                - completed
-                - shipped
-                - placed 
-                - return_pending 
-                - returned
+              arguments:
+                values:
+                  - completed
+                  - shipped
+                  - placed
+                  - return_pending
+                  - returned
       - name: customer_id
         data_tests:
           - relationships:
