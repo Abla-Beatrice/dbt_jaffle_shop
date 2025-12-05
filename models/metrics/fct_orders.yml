@@ -72,6 +72,20 @@ semantic_models:
         expr: order_total
         agg: min
 
+  - name: metricflow_time_spine
+    description: "A daily time spine for MetricFlow metrics"
+    model: ref('metricflow_time_spine')
+    entities:
+      - name: time
+        type: primary
+    dimensions:
+      - name: date_day
+        type: time
+        expr: date_day
+        type_params:
+          time_granularity: day
+    measures: []
+
 metrics:
 #SIMPLE TYPE METRICS
   - name: "order_total"
@@ -180,20 +194,25 @@ metrics:
     type: cumulative
     type_params:
       measure: order_total
+
   - name: "cumulative_order_ammount_l1m"
     label: "cumulative_order_ammount_l1m"    
     description: "Trailing 1 month cumulative order amount"
     type: cumulative
     type_params:
       measure: order_total
-      window: 1 month
+      cumulative_type_params:
+        window: 1 month
+
   - name: "cumulative_order_amount_mtd"
     label: "cumulative_order_amount_mtd"    
     description: "The month to date value of all orders"
     type: cumulative
     type_params:
       measure: order_total
-      grain_to_date: month
+      cumulative_type_params:
+        grain_to_date: month
+
 saved_queries:
   - name: order_metrics
     description: testing out order metrics in one table 
