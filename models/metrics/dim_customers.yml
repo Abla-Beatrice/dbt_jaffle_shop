@@ -9,6 +9,8 @@ semantic_models:
       - name: customer
         expr: customer_id
         type: primary
+
+# Dimensions
     dimensions:
       - name: customer_name
         type: categorical
@@ -22,6 +24,8 @@ semantic_models:
         type: time
         type_params:
           time_granularity: day
+
+# Measures
     measures:
       - name: count_lifetime_orders
         description: Total count of orders per customer.
